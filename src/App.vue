@@ -14,7 +14,8 @@
     <div>
       <list v-bind:selected-tab="selectedTab" v-bind:data="todoList"
         v-on:@finish="onClickFinish"
-        v-on:@reset="onClickReset"></list>
+        v-on:@reset="onClickReset"
+        v-on:@remove="onClickRemove"></list>
     </div>
 
   </div>
@@ -55,12 +56,16 @@ export default {
       this.selectedTab = tab
       this.search()
     },
-    onClickFinish (item) { // todo 완료
-      ToDoModel.finish(item)
+    onClickFinish (index) { // todo 완료
+      ToDoModel.finish(index)
       this.search()
     },
-    onClickReset (item) { // 완료된 todo 리셋
-      ToDoModel.reset(item)
+    onClickReset (index) { // 완료된 todo 리셋
+      ToDoModel.reset(index)
+      this.search()
+    },
+    onClickRemove (index) { // 완료된 todo 리셋
+      ToDoModel.remove(index)
       this.search()
     },
     onInputTodo (query) { // todo 입력

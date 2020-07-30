@@ -1,21 +1,19 @@
 <template>
   <div>
     <ul class="list">
-      <li v-for="(item, index) in data" :key="index">
+      <li v-for="(row, index) in data" :key="index">
         <span class="glyphicon glyphicon-asterisk"></span>
-        {{item.todo}}
+        {{row.todo}}
         <span class="todoBtn label label-primary"
           v-if="selectedTab === 'todo'"
           v-on:click="finishBtnClick(index)">
-          <span class="glyphicon glyphicon-ok"></span>
+          <span class="glyphicon glyphicon-ok">Finish</span>
         </span>
         <span class="todoBtn label label-danger"
           v-if="selectedTab === 'finish'"
           v-on:click="resetBtnClick(index)">Cancel</span>
         <span class="todoBtn label label-danger"
-          v-on:click="removeBtnClick(index)">
-          <span class="glyphicon glyphicon-remove"></span>
-        </span>
+          v-on:click="removeBtnClick(row)">Delete</span>
       </li>
     </ul>
   </div>
@@ -26,14 +24,14 @@
 export default {
   props: ['data', 'selectedTab'],
   methods: {
-    finishBtnClick (item) {
-      this.$emit('@finish', item)
+    finishBtnClick (index) {
+      this.$emit('@finish', index)
     },
-    resetBtnClick (item) {
-      this.$emit('@reset', item)
+    resetBtnClick (index) {
+      this.$emit('@reset', index)
     },
-    removeBtnClick (item) {
-      this.$emit('@remove', item)
+    removeBtnClick (row) {
+      this.$emit('@remove', row)
     }
   }
 }
