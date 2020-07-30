@@ -1,5 +1,8 @@
 export default {
   data: [
+    {todo: '할 일 1', state: true},
+    {todo: '할 일 2', state: false},
+    {todo: '할 일 3', state: true}
   ],
   list (tab) {
     return new Promise(resolve => {
