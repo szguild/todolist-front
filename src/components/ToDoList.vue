@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="list">
-      <li v-for="(item, index) in data" :key="item">
+      <li v-for="(item, index) in data" :key="index">
         <span class="glyphicon glyphicon-asterisk"></span>
         {{item.todo}}
         <span class="todoBtn label label-primary"
@@ -11,7 +11,11 @@
         </span>
         <span class="todoBtn label label-danger"
           v-if="selectedTab === 'finish'"
-          v-on:click="resetBtnClick(index)">reset</span>
+          v-on:click="resetBtnClick(index)">Cancel</span>
+        <span class="todoBtn label label-danger"
+          v-on:click="removeBtnClick(index)">
+          <span class="glyphicon glyphicon-remove"></span>
+        </span>
       </li>
     </ul>
   </div>
@@ -27,6 +31,9 @@ export default {
     },
     resetBtnClick (item) {
       this.$emit('@reset', item)
+    },
+    removeBtnClick (item) {
+      this.$emit('@remove', item)
     }
   }
 }

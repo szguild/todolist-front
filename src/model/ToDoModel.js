@@ -1,11 +1,12 @@
 export default {
   data: [
-    {todo: '할 일 0', state: true},
-    {todo: '할 일 1', state: true},
-    {todo: '할 일 2', state: false},
-    {todo: '할 일 3', state: true},
-    {todo: '할 일 4', state: false}
   ],
+  list (tab) {
+    return new Promise(resolve => {
+      if (tab === 'todo') resolve(this.data.filter(item => item.state === true))
+      if (tab === 'finish') resolve(this.data.filter(item => item.state === false))
+    })
+  },
   add (todo = '') {
     todo = todo.trim()
     if (!todo) return

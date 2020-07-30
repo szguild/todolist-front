@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <h2 calss="container">Todo</h2>
+      <h2 calss="container">To Do List</h2>
     </header>
 
     <div calss="container">
