@@ -26,8 +26,5 @@ export default {
   remove (row) {
     this.data.splice(this.data.indexOf(row), 1)
     console.log(this.data)
-  },
-  addtest (row) {
-    console.log('test')
   }
 }
